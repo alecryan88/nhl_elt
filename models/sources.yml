@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: SNOWFLAKE_RAW
+    database: NHL_DB
+    schema: RAW
+
+    freshness:
+      warn_after: {count: 2, period: day}
+    
+    loaded_at_field: "to_timestamp(partition_date)"
+    
+    tables:
+      - name: RAW_NHL_GAME_DATA
+        description: Data loaded by upstream dagster pipeline. The data is sourced from the NHL REST API https://statsapi.web.nhl.com
