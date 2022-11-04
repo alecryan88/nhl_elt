@@ -1,0 +1,304 @@
+version: 2
+
+models:
+
+  - name: stg_game_conferences
+    description: Table contains information about conferences including foreign key to join to division_id.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+      
+      - name: conference_id
+        description: '{{ doc("conference_id") }}'
+       
+      - name: conference_name
+        description: '{{ doc("conference_name") }}'
+        
+      - name: division_id
+        description: '{{ doc("division_id") }}'
+        
+
+  - name: stg_game_divisions
+    description: Table contains information about divisions including foreign key to join to team_id.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+       
+      - name: division_id
+        description: '{{ doc("division_id") }}'
+        
+      - name: division_name
+        description: '{{ doc("division_name") }}'
+        
+      - name: team_id
+        description: '{{ doc("division_id") }}'
+
+        
+  - name: stg_game_events
+    description: Contains data for each game event. Game events are actions taken by players on the ice.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: play_id
+        description: '{{ doc("play_id") }}'
+        tests:
+          - not_null
+          - unique
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+       
+      - name: event_timestamp
+        description: '{{ doc("event_timestamp") }}'
+        
+      - name: event_id
+        description: '{{ doc("event_id") }}'
+        
+      - name: event_team_id
+        description: '{{ doc("event_team_id") }}'
+
+      - name: x_coor
+        description: '{{ doc("x_coor") }}'
+
+      - name: y_coor
+        description: '{{ doc("y_coor") }}'
+
+      - name: description
+        description: '{{ doc("description") }}'
+
+      - name: event
+        description: '{{ doc("event") }}'
+
+      - name: event_code
+        description: '{{ doc("event_code") }}'
+
+      - name: event_type_id
+        description: '{{ doc("event_type_id") }}'
+
+      - name: period
+        description: '{{ doc("period") }}'
+
+      - name: period_type
+        description: '{{ doc("period_type") }}'
+
+      - name: period_s
+        description: '{{ doc("period_s") }}'
+  
+  
+  - name: stg_game_events_players
+    description: Contains data for the players involved in each play_id. There are typically a number of players involved in a given event. For example, a goal may contain up to 4 players. A goal scorer, 2 players that assistedon the goal and a goalie who is scored on.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: play_id
+        description: '{{ doc("play_id") }}'
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+        
+      - name: game_season
+        description: '{{ doc("game_season") }}'
+
+      - name: event_id
+        description: '{{ doc("event_id") }}'
+        tests:
+          - not_null
+
+      - name: player_id
+        description: '{{ doc("player_id") }}'
+        
+      - name: player_type
+        description: '{{ doc("player_type") }}'
+
+  
+  - name: stg_game_metadata
+    description: Contains data about the game schedule, status, teams involved and home/away orientation.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+        
+      - name: game_season
+        description: '{{ doc("game_season") }}'
+
+      - name: game_type
+        description: '{{ doc("game_type") }}'
+
+      - name: away_team_id
+        description: '{{ doc("away_team_id") }}'
+      
+      - name: home_team_id
+        description: '{{ doc("home_team_id") }}'
+
+      - name: game_start
+        description: '{{ doc("game_start") }}'
+
+      - name: game_end
+        description: '{{ doc("game_end") }}'
+      
+      - name: game_state
+        description: '{{ doc("game_state") }}'
+        
+
+  - name: stg_game_roster
+    description: Contains data about the team roster.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: home_away_status
+        description: '{{ doc("home_away_status") }}'
+
+      - name: team_id
+        description: '{{ doc("team_id") }}'
+
+      - name: active_status
+        description: '{{ doc("home_away_status") }}'
+
+      - name: player_id
+        description: '{{ doc("player_id") }}'
+
+      - name: jersey_number
+        description: '{{ doc("jersey_number") }}'
+
+      - name: full_name
+        description: '{{ doc("full_name") }}'
+
+      - name: roster_status
+        description: '{{ doc("roster_status") }}'
+
+      - name: handedness
+        description: '{{ doc("handedness") }}'
+
+      - name: pos_abv
+        description: '{{ doc("pos_abv") }}'
+
+      - name: pos_name
+        description: '{{ doc("pos_name") }}'
+     
+      - name: pos_type
+        description: '{{ doc("pos_type") }}'
+
+
+  - name: stg_game_teams
+    description: Contains information about the team, active status and where they play.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+
+      - name: team_id
+        description: '{{ doc("team_id") }}'
+
+      - name: team_name
+        description: '{{ doc("team_name") }}'
+
+      - name: division_id
+        description: '{{ doc("division_id") }}'
+
+      - name: venue_id
+        description: '{{ doc("venue_id") }}'
+
+      - name: team_tri_code
+        description: '{{ doc("tri_code") }}'
+
+      - name: team_active_status
+        description: '{{ doc("team_active_status") }}'
+
+
+  - name: stg_game_venues
+    description: Contains information about each venue including the team that plays in the venue, timezone and location.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+
+      - name: team_id
+        description: '{{ doc("team_id") }}'
+
+      - name: venue_id
+        description: '{{ doc("venue_id") }}'
+
+      - name: venue_city
+        description: '{{ doc("venue_city") }}'
+
+      - name: venue_name
+        description: '{{ doc("venue_name") }}'
+
+      - name: venue_timezone
+        description: '{{ doc("venue_timezone") }}'
+
+      - name: venue_timezone_offset
+        description: '{{ doc("venue_timezone_offset") }}'
+
+
+  - name: stg_player_demographics
+    description: Contains information regarding each player's demograhics. These values should not change frequently.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+
+      - name: player_id
+        description: '{{ doc("player_id") }}'
+
+      - name: birth_city
+        description: '{{ doc("birth_city") }}'
+
+      - name: birth_country
+        description: '{{ doc("birth_country") }}'
+
+      - name: birth_state_province
+        description: '{{ doc("birth_state_province") }}'
+
+      - name: player_first_name
+        description: '{{ doc("player_first_name") }}'
+
+      - name: player_last_name
+        description: '{{ doc("player_last_name") }}'
+
+      - name: height_inches
+        description: '{{ doc("height_inches") }}'
+
+      - name: nationality
+        description: '{{ doc("nationality") }}'
+
+      - name: handedness
+        description: '{{ doc("handedness") }}'
+
+      - name: weight
+        description: '{{ doc("handedness") }}'
