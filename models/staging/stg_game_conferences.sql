@@ -8,5 +8,5 @@ Select distinct
 from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:teams)) teams
 
 {% if is_incremental() %}
-where partition_date = date'{{ run_started_at }}')
+where partition_date = date('{{ run_started_at }}')
 {% endif %}
