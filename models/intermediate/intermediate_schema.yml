@@ -1,0 +1,92 @@
+version: 2
+
+models:
+
+  - name: int_game_player_stats
+    description: Summarizes the count of events for each player per period.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+        
+      - name: event_timestamp 
+        description: '{{ doc("event_timestamp") }}'
+
+      - name: period_type
+        description: '{{ doc("period_type") }}'
+
+      - name: period
+        description: '{{ doc("period") }}'
+      
+      - name: event_id
+        description: '{{ doc("event_id") }}'
+
+      - name: player_id
+        description: '{{ doc("player_id") }}'
+
+      - name: goals_scored
+        description: '{{ doc("goals_scored") }}'
+      
+      - name: overtime_goals_scored
+        description: '{{ doc("overtime_goals_scored") }}'
+
+      - name: assists
+        description: '{{ doc("assists") }}'
+      
+      - name: goals_against
+        description: '{{ doc("goals_against") }}'
+
+      - name: overtime_goals_against
+        description: '{{ doc("overtime_goals_against") }}'
+      
+      - name: shots_on_goal
+        description: '{{ doc("shots_on_goal") }}'
+      
+      - name: shots_missed
+        description: '{{ doc("shots_missed") }}'
+      
+      - name: saves
+        description: '{{ doc("saves") }}'
+
+      - name: hits
+        description: '{{ doc("hits") }}'
+      
+      - name: received_hits
+        description: '{{ doc("received_hits") }}'
+        
+      - name: had_shots_blocked
+        description: '{{ doc("had_shots_blocked") }}'
+      
+      - name: blocked_shots
+        description: '{{ doc("blocked_shots") }}'
+
+      - name: faceoffs_won
+        description: '{{ doc("faceoffs_won") }}'
+      
+      - name: faceoffs_lost
+        description: '{{ doc("faceoffs_lost") }}'
+
+      - name: takeaways
+        description: '{{ doc("takeaways") }}'
+      
+      - name: giveaways
+        description: '{{ doc("giveaways") }}'
+
+      - name: shootout_goals
+        description: '{{ doc("shootout_goals_scored") }}'
+
+      - name: shootout_shots
+        description: '{{ doc("shootout_attempts") }}'
+      
+      - name: shootout_goals_against
+        description: '{{ doc("shootout_goals_against") }}'
+
+      - name: shootout_saves
+        description: '{{ doc("shootout_saves") }}'
+      
+      - name: shootout_shots_faced
+        description: '{{ doc("shootout_shots_faced") }}'

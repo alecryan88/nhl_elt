@@ -1,0 +1,249 @@
+version: 2
+
+models:
+
+  - name: game_player_stats
+    description: Summarizes player stats for each game.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+
+      - name: game_season
+        description: '{{ doc("game_season") }}'
+
+      - name: game_start
+        description: '{{ doc("game_start") }}'
+
+      - name: game_end
+        description: '{{ doc("game_end") }}'
+
+      - name: game_type
+        description: '{{ doc("game_type") }}'
+
+      - name: full_name
+        description: '{{ doc("full_name") }}'
+        
+      - name: team_name
+        description: '{{ doc("team_name") }}'
+
+      - name: division_name
+        description: '{{ doc("division_name") }}'
+
+      - name: conference_name
+        description: '{{ doc("conference_name") }}'
+         
+      - name: active_status
+        description: '{{ doc("active_status") }}'
+
+      - name: roster_status
+        description: '{{ doc("roster_status") }}'
+  
+      - name: jersey_number
+        description: '{{ doc("jersey_number") }}'
+       
+      - name: pos_abv
+        description: '{{ doc("pos_abv") }}'
+
+      - name: handedness
+        description: '{{ doc("handedness") }}'
+
+      - name: home_away_status
+        description: '{{ doc("home_away_status") }}'
+         
+      - name: goals_scored
+        description: '{{ doc("goals_scored") }}'
+
+      - name: overtime_goals_scored
+        description: '{{ doc("overtime_goals_scored") }}'
+  
+      - name: assists
+        description: '{{ doc("assists") }}'
+       
+      - name: shots_missed
+        description: '{{ doc("shots_missed") }}'
+
+      - name: shots_on_goal
+        description: '{{ doc("shots_on_goal") }}'
+
+      - name: goals_against
+        description: '{{ doc("goals_against") }}'
+         
+      - name: overtime_goals_against
+        description: '{{ doc("overtime_goals_against") }}'
+
+      - name: saves
+        description: '{{ doc("saves") }}'
+  
+      - name: hits
+        description: '{{ doc("hits") }}'
+       
+      - name: received_hits
+        description: '{{ doc("received_hits") }}'
+
+      - name: had_shots_blocked
+        description: '{{ doc("had_shots_blocked") }}'
+
+      - name: blocked_shots
+        description: '{{ doc("blocked_shots") }}'
+         
+      - name: faceoffs_won
+        description: '{{ doc("faceoffs_won") }}'
+
+      - name: faceoffs_lost
+        description: '{{ doc("faceoffs_lost") }}'
+  
+      - name: takeaways
+        description: '{{ doc("takeaways") }}'
+       
+      - name: giveaways
+        description: '{{ doc("giveaways") }}'
+        
+      - name: shootout_goals
+        description: '{{ doc("shootout_goals_scored") }}'
+
+      - name: shootout_shots
+        description: '{{ doc("shootout_attempts") }}'
+      
+      - name: shootout_goals_against
+        description: '{{ doc("shootout_goals_against") }}'
+
+      - name: shootout_saves
+        description: '{{ doc("shootout_saves") }}'
+      
+      - name: shootout_shots_faced
+        description: '{{ doc("shootout_shots_faced") }}'
+
+
+  - name: game_finals
+    description: Summarizes team stats for each game. This model can be used for following team standings throughout the season.
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+
+      - name: game_season
+        description: '{{ doc("game_season") }}'
+
+      - name: game_start
+        description: '{{ doc("game_start") }}'
+
+      - name: game_end
+        description: '{{ doc("game_end") }}'
+
+      - name: game_type
+        description: '{{ doc("game_type") }}'
+
+      - name: team_name
+        description: '{{ doc("team_name") }}'
+
+      - name: division_name
+        description: '{{ doc("division_name") }}'
+
+      - name: conference_name
+        description: '{{ doc("conference_name") }}'
+
+      - name: home_away_status
+        description: '{{ doc("home_away_status") }}'  
+         
+      - name: goals_scored
+        description: '{{ doc("goals_scored") }}'
+
+      - name: overtime_goals_scored
+        description: '{{ doc("overtime_goals_scored") }}'
+  
+      - name: assists
+        description: '{{ doc("assists") }}'
+       
+      - name: shots_missed
+        description: '{{ doc("shots_missed") }}'
+
+      - name: shots_on_goal
+        description: '{{ doc("shots_on_goal") }}'
+
+      - name: goals_against
+        description: '{{ doc("goals_against") }}'
+         
+      - name: overtime_goals_against
+        description: '{{ doc("overtime_goals_against") }}'
+
+      - name: saves
+        description: '{{ doc("saves") }}'
+  
+      - name: hits
+        description: '{{ doc("hits") }}'
+       
+      - name: received_hits
+        description: '{{ doc("received_hits") }}'
+        
+      - name: had_shots_blocked
+        description: '{{ doc("had_shots_blocked") }}'
+
+      - name: blocked_shots
+        description: '{{ doc("blocked_shots") }}'
+         
+      - name: faceoffs_won
+        description: '{{ doc("faceoffs_won") }}'
+
+      - name: faceoffs_lost
+        description: '{{ doc("faceoffs_lost") }}'
+  
+      - name: takeaways
+        description: '{{ doc("takeaways") }}'
+       
+      - name: giveaways
+        description: '{{ doc("giveaways") }}'
+        
+      - name: shootout_goals
+        description: '{{ doc("shootout_goals_scored") }}'
+
+      - name: shootout_shots
+        description: '{{ doc("shootout_attempts") }}'
+      
+      - name: shootout_goals_against
+        description: '{{ doc("shootout_goals_against") }}'
+
+      - name: shootout_saves
+        description: '{{ doc("shootout_saves") }}'
+      
+      - name: shootout_shots_faced
+        description: '{{ doc("shootout_shots_faced") }}'
+
+
+      - name: regulation_win
+        description: '{{ doc("regulation_win") }}'
+       
+      - name: regulation_loss
+        description: '{{ doc("regulation_loss") }}'
+        
+      - name: shootout_win
+        description: '{{ doc("shootout_win") }}'
+
+      - name: shootout_loss
+        description: '{{ doc("shootout_loss") }}'
+      
+      - name: overtime_win
+        description: '{{ doc("overtime_win") }}'
+
+      - name: overtime_loss
+        description: '{{ doc("overtime_loss") }}'
+      
+      - name: win
+        description: '{{ doc("win") }}'
+
+      - name: loss
+        description: '{{ doc("loss") }}'
+
+      - name: otl
+        description: '{{ doc("otl") }}'
+      
+      - name: points
+        description: '{{ doc("points") }}'
