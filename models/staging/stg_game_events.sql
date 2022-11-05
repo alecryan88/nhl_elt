@@ -15,7 +15,7 @@ Select
     plays.value:about.periodType::string as period_type,
     plays.value:about.ordinalNum::string as period_s
 
-from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData.plays.allPlays)) plays
+from {{source('nhl_api_source', 'nhl_api_game_events')}}, table(flatten(JSON_EXTRACT:liveData.plays.allPlays)) plays
 
 {% if is_incremental() %}
 where partition_date = date('{{ run_started_at }}')

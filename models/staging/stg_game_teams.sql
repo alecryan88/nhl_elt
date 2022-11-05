@@ -9,7 +9,7 @@ Select
     teams.value:triCode::string as team_tri_code,
     teams.value:active::boolean as team_active_status
    
-from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:teams)) teams
+from {{source('nhl_api_source', 'nhl_api_game_events')}}, table(flatten(JSON_EXTRACT:gameData:teams)) teams
 
 {% if is_incremental() %}
 where partition_date = date('{{ run_started_at }}')

@@ -15,7 +15,7 @@ Select
     '{{ run_started_at }}' as last_updated_dbt
         
 
-from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:players)) player
+from {{source('nhl_api_source', 'nhl_api_game_events')}}, table(flatten(JSON_EXTRACT:gameData:players)) player
 
 {% if is_incremental() %}
 where partition_date = date('{{ run_started_at }}')

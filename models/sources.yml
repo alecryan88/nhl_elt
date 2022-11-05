@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: SNOWFLAKE_RAW
+  - name: nhl_api_source
     database: NHL_DB
     schema: RAW
 
@@ -11,5 +11,5 @@ sources:
     loaded_at_field: "to_timestamp(partition_date)"
     
     tables:
-      - name: RAW_NHL_GAME_DATA
+      - name: nhl_api_game_events
         description: Data loaded by upstream dagster pipeline. The data is sourced from the NHL REST API https://statsapi.web.nhl.com
