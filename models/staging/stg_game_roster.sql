@@ -18,7 +18,7 @@ Select
     players.value:position:name::varchar as pos_name,
     players.value:position:type::varchar as pos_type
     
-from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:away:players)) players
+from {{source('nhl_api_source', 'nhl_api_game_events')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:away:players)) players
 
 {% if is_incremental() %}
 where partition_date = date('{{ run_started_at }}')
@@ -45,7 +45,7 @@ Select
     players.value:position:type::varchar as pos_type
 
     
-from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:home:players)) players
+from {{source('nhl_api_source', 'nhl_api_game_events')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:home:players)) players
 
 {% if is_incremental() %}
 where partition_date = date('{{ run_started_at }}')

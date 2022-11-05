@@ -7,7 +7,7 @@ Select
     officials.value:official.id::int as official_id,
     officials.value:officialType::string as official_type
     
-from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:officials)) officials
+from {{source('nhl_api_source', 'nhl_api_game_events')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:officials)) officials
 
 {% if is_incremental() %}
 where partition_date = date('{{ run_started_at }}')

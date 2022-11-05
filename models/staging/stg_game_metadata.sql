@@ -9,7 +9,7 @@ Select
     JSON_EXTRACT:gameData:datetime:endDateTime::timestamp as game_end,
     JSON_EXTRACT:gameData:status:abstractGameState::string as game_state
 
-from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}
+from {{source('nhl_api_source', 'nhl_api_game_events')}}
 
 {% if is_incremental() %}
 where partition_date = date('{{ run_started_at }}')
