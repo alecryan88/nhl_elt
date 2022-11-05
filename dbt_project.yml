@@ -33,6 +33,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   nhl_elt:
-    # Applies to all files under models/example/
-    example:
-      materialized: view
+    models:
+      +materialized: view
