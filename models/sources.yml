@@ -12,4 +12,18 @@ sources:
     
     tables:
       - name: nhl_api_game_events
-        description: Data loaded by upstream dagster pipeline. The data is sourced from the NHL REST API https://statsapi.web.nhl.com
+        description: Data loaded by upstream lambda function. The data is sourced from the NHL REST API https://statsapi.web.nhl.com
+
+
+  - name: nhl_api_odds
+    database: NHL_DB
+    schema: RAW
+
+    freshness:
+      warn_after: {count: 2, period: day}
+    
+    loaded_at_field: "to_timestamp(partition_date)"
+    
+    tables:
+      - name: nhl_api_odds
+        description: Data loaded by upstream lambda function.. The data is sourced from the Odds API https://the-odds-api.com.
