@@ -64,7 +64,8 @@ Select
         bookmaker,
         market,
         outcomes_flatten.value:name::string as name,
-        outcomes_flatten.value:price::decimal(10,2) as price
+        outcomes_flatten.value:price::decimal(10,2) as decimal_odds,
+        {{ decimal_to_american_odds('decimal_odds') }} as american_odds
         
 from markets, table(flatten(outcomes)) as outcomes_flatten
 
