@@ -56,8 +56,14 @@ Select
         timestamp,
         previous_timestamp,
         next_timestamp,
-        away_team,
-        home_team,
+        case
+          when home_team = 'St Louis Blues' then 'St. Louis Blues' 
+          else home_team 
+        end as home_team,
+        case
+          when away_team = 'St Louis Blues' then 'St. Louis Blues' 
+          else away_team 
+        end as away_team,
         id,
         sport_key,
         game_start,
