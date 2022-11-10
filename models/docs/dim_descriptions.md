@@ -113,3 +113,5 @@
 {% docs handedness %} The player's handedness. {% enddocs %}
 
 {% docs weight %} The player's weight. {% enddocs %}
+
+{% docs game_relation_id %} Surrogate key composed of a game_start_date, home_team_name and away_team_name. Join key for odds datasets. {% enddocs %}
