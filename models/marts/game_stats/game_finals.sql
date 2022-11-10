@@ -3,6 +3,7 @@
 Select  
         partition_date,
         game_id,
+        game_relation_id,
         game_season,
         game_start,
         game_end,
@@ -53,4 +54,4 @@ from {{ref('game_player_stats' )}}
 where partition_date = date('{{ run_started_at }}')
 {% endif %}
 
-{{ dbt_utils.group_by(n=10) }}
+{{ dbt_utils.group_by(n=11) }}
