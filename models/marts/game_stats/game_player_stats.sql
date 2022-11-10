@@ -3,6 +3,7 @@
 Select 
         d.partition_date,
         d.game_id,
+        m.game_relation_id,
         m.game_season,
         m.game_start,
         m.game_end,
@@ -15,7 +16,7 @@ Select
         roster_status,
         jersey_number,
         pos_abv,
-        handedness as test_column,
+        handedness,
         home_away_status,
         sum(coalesce(goals_scored,0))  as goals_scored,
         sum(coalesce(overtime_goals_scored,0))  as overtime_goals_scored,
@@ -60,4 +61,4 @@ on div.division_id = conf.division_id  and div.game_id = conf.game_id
 where d.partition_date = date('{{ run_started_at }}')
 {% endif %}
 
-{{ dbt_utils.group_by(n=16) }}
+{{ dbt_utils.group_by(n=17) }}
