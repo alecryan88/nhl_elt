@@ -35,4 +35,4 @@ jobs:
         ECR_REPOSITORY: nhl_api_game_events
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        pwd
+        ls
