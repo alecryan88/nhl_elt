@@ -12,7 +12,7 @@ jobs:
     steps:
 
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -31,5 +31,5 @@ jobs:
         ECR_REPOSITORY: nhl_api_game_events
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -f lambdas/$ECR_REPOSITORY -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . 
+        docker build -f $GITHUB_WORKSPACE/lambdas/$ECR_REPOSITORY -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . 
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
