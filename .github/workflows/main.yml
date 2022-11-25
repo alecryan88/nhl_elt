@@ -1,4 +1,3 @@
-
 name: Deploy to ECR
 
 on: workflow_dispatch
@@ -32,5 +31,5 @@ jobs:
         ECR_REPOSITORY: nhl_api_game_events
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build -f lambdas/$ECR_REPOSITORY -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . 
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
