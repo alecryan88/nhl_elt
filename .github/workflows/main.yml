@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults: 
      run:
-      working-directory: ./nhl_api_game_events
+      working-directory: ./lambdas/nhl_api_game_events
     
     steps:
 
@@ -29,7 +29,6 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build, tag, and push image to Amazon ECR
-      working-directory: ./lambdas
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: nhl_api_game_events
