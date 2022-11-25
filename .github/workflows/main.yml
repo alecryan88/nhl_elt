@@ -35,5 +35,4 @@ jobs:
         ECR_REPOSITORY: nhl_api_game_events
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -f $ECR_REPOSITORY -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . 
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        pwd
