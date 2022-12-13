@@ -1,0 +1,6 @@
+project_name: nhl_elt
+loaders:
+    - name: nhl-api-game-events
+      active: True #Currently does nothing
+    #- name: example-tested
+    #  active: True #Currently does nothing

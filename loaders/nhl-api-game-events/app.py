@@ -4,7 +4,8 @@ import boto3
 import io
 import os
 
-client = boto3.client( 's3')
+
+client = boto3.client('s3')
 
 
 def get_game_data(game_id):
@@ -41,8 +42,8 @@ def handler(event, context):
 
             client.put_object(
                 Body=bytes,
-                Bucket='nhl-analytics',
-                Key=f'nhl-game-data/partition_date={date}/{game_id}.json'
+                Bucket=os.environ['s3_bucket'],
+                Key=f'partition_date={date}/{game_id}.json'
             )
 
             print(f"Uploaded {game_id}.json to s3.")
