@@ -1,6 +1,7 @@
 resource "local_file" "foo" {
-    content  = "foo"
-    filename = "../loaders/example.py"
+    for_each = local.loader_names
+    content  = ""
+    filename = "../loaders/${each.value}/Dockerfile"
 }
 
 
